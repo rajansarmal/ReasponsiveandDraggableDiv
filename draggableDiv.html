@@ -1,64 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-        #parent {
-  width: 80%;
-  height: 80vh;
-  background-color: #eee;
-  position: relative;
-}
+   <link href="assets/draggable.css" rel="stylesheet" />
+  </head>
+  <body>
 
-#child {
-  width: 100px;
-  height: 100px;
-  background-color: #ccc;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: move;
-}
+    <div class="parent">
+      <div class="child"></div>
+    </div>
 
-    </style>
-</head>
-<body>
-    <div id="parent">
-  <div id="child"></div>
-</div>
-<script>
-    var parent = document.getElementById("parent");
-var child = document.getElementById("child");
-var isDragging = false;
-
-child.addEventListener("mousedown", function(e) {
-  isDragging = true;
-});
-
-parent.addEventListener("mousemove", function(e) {
-  if (isDragging) {
-    var x = e.clientX;
-    var y = e.clientY;
-    var parentRect = parent.getBoundingClientRect();
-    var maxX = parentRect.width - child.offsetWidth;
-    var maxY = parentRect.height - child.offsetHeight;
-    var posX = x - parentRect.left - child.offsetWidth / 2;
-    var posY = y - parentRect.top - child.offsetHeight / 2;
-    posX = Math.max(0, Math.min(posX, maxX));
-    posY = Math.max(0, Math.min(posY, maxY));
-    child.style.left = posX + "px";
-    child.style.top = posY + "px";
-  }
-});
-
-parent.addEventListener("mouseup", function(e) {
-  isDragging = false;
-});
-
-</script>
-</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   <script src="assets/draggable.js"></script>
+  </body>
 </html>
